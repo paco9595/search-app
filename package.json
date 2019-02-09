@@ -1,0 +1,42 @@
+{
+  "name": "search-app",
+  "version": "1.0.0",
+  "description": "mercado libre de empresas",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paco9595/search-app.git"
+  },
+  "author": "Francisco Villarreal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paco9595/search-app/issues"
+  },
+  "homepage": "https://github.com/paco9595/search-app#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
+    "classnames": "2.2.6",
+    "node-sass": "^4.9.3",
+    "prop-types": "15.6.2",
+    "react": "16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "16.5.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.3",
+    "reactstrap": "^7.1.0",
+    "styled-components": "3.4.9"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
