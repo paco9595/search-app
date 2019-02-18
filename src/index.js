@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Home } from './contaniers';
+import { Home, Search } from './contaniers';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,6 +12,7 @@ class App extends Component {
         <Router>
             <Switch>
                 <Route exact path="/" component={Home}/>
+                <Route path="/search/:word" component={Search}/>
             </Switch>
         </Router>
     );
