@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput } from './../commons'
+import { TextInput } from './../Components'
 import { SearchContainer } from './style';
 export const Search = props=>{
     return(

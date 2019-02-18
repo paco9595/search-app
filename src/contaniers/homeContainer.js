@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { HomeContainer, IconContainer, TitleIcon } from './style'
 import { TextInput, SectionFlex, SliderComponent } from './../Components'
 import { Theme } from './../utils'
-
+import { SugestionsService } from './../services/segestionsServie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './../style.css'
 export class Home extends PureComponent {
@@ -11,7 +11,11 @@ export class Home extends PureComponent {
     }
     change = (e) => {
         console.log(e.target.value)
-        this.setState({ options: [e.target.value] })
+        SugestionsService(e.target.value).then(data=>{
+            console.log(data)
+            this.setState({options: data})
+        })
+
     }
 
     render() {

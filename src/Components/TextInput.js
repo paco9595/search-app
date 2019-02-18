@@ -15,6 +15,8 @@ const Input = styled.input`
 const Opciones = styled.div`
     margin-top: 5px;
     background-color:white;
+    position: absolute;
+    width: 500px
     ${media.phone`
         width:90%;
     `}
