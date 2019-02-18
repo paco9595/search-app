@@ -17,3 +17,5 @@ export const TitleIcon = styled.div`
     width:100%;
     font-size: 30px;
 `
+export const SearchContainer = styled.div`
+`

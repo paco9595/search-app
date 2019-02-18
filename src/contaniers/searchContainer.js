@@ -1,7 +1,12 @@
 import React from 'react'
-
+import { TextInput } from './../commons'
+import { SearchContainer } from './style';
 export const Search = props=>{
     return(
-        <h1>search Page</h1>
+        <div className="container">
+            <div className="row">
+                <TextInput shadow width="auto" height="20"/>
+            </div>
+        </div>
     )
 } 
