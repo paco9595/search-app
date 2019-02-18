@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Home, Search } from './contaniers';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.css'
+library.add(fas)
 
 class App extends Component {
   render() {
@@ -20,4 +24,4 @@ class App extends Component {
 }
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App/>, rootElement);
+ReactDOM.render(<App />, rootElement);
