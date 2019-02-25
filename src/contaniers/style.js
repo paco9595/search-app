@@ -1,13 +1,19 @@
 import styled from 'styled-components'
-
 export const HomeContainer = styled.div`
-    background-color: red;
-    width: 100vw;
-    height: 100vh;
+
+`
+export const IconContainer = styled.div`
+    padding: 30px;
+    div{
+        display:flex;
+        justify-content:center;
+    }
+    
+`
+export const TitleIcon = styled.div`
+    margin: 15px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-image: url('./assets/background-home2.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    width:100%;
+    font-size: 30px;
 `
