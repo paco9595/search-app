@@ -13,12 +13,12 @@ library.add(fas)
 class App extends Component {
   render() {
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/search/:word" component={Search}/>
-            </Switch>
-        </Router>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/search/:word" component={Search} />
+        </Switch>
+      </Router>
     );
   }
 }
