@@ -46,7 +46,7 @@ export const municipio = {
         "Xpujil",
         "Candelaria"
     ],
-    "Coahuila de Zaragoza": [
+    "Coahuila": [
         "Abasolo",
         "Acuña",
         "Ciudad Acuña",
@@ -58,7 +58,7 @@ export const municipio = {
         "Cuatro Ciénegas de Carranza",
         "Escobedo",
         "Francisco I. Madero",
-        "Francisco I. Madero (Chávez)",
+        "Francisco I. Madero",
         "Frontera",
         "General Cepeda",
         "Guerrero",
@@ -115,7 +115,7 @@ export const municipio = {
         "Amatenango de la Frontera",
         "Amatenango del Valle",
         "Angel Albino Corzo",
-        "Jaltenango de la Paz (Angel Albino Corzo)",
+        "Jaltenango de la Paz",
         "Arriaga",
         "Bejucal de Ocampo",
         "Bella Vista",
@@ -331,7 +331,7 @@ export const municipio = {
         "Uruachi",
         "Valle de Zaragoza"
     ],
-    "Ciudad de México": [
+    "Ciudad De Mexico": [
         "Azcapotzalco",
         "",
         "Coyoacán",
@@ -981,7 +981,7 @@ export const municipio = {
         "Tonanitla",
         "Santa María Tonanitla"
     ],
-    "Michoacán de Ocampo": [
+    "Michoacan": [
         "Acuitzio",
         "Acuitzio del Canje",
         "Aguililla",
@@ -1214,7 +1214,7 @@ export const municipio = {
         "Bahía de Banderas",
         "Valle de Banderas"
     ],
-    "Nuevo León": [
+    "Nuevo Leon": [
         "Abasolo",
         "Agualeguas",
         "Los Aldamas",
@@ -1831,7 +1831,7 @@ export const municipio = {
         "Teotitlán del Valle",
         "Teotongo",
         "Tepelmeme Villa de Morelos",
-        "Heroica Villa Tezoatlán de Segura y Luna, Cuna de la Independencia de Oaxaca",
+        "Heroica Villa Tezoatlán de Segura y Luna",
         "San Jerónimo Tlacochahuaya",
         "Tlacolula de Matamoros",
         "Tlacotepec Plumas",
@@ -2174,7 +2174,7 @@ export const municipio = {
         "Bacalar",
         "Puerto Morelos"
     ],
-    "San Luis Potosí": [
+    "San Luis Potosi": [
         "Ahualulco",
         "Ahualulco del Sonido 13",
         "Alaquines",
@@ -2341,7 +2341,7 @@ export const municipio = {
         "Heroica Ciudad de Ures",
         "Villa Hidalgo",
         "Villa Pesqueira",
-        "Villa Pesqueira (Mátape)",
+        "Villa Pesqueira",
         "Yécora",
         "General Plutarco Elías Calles",
         "Sonoyta",
@@ -2512,7 +2512,7 @@ export const municipio = {
         "Santa Cruz Quilehtla",
         "Santa Isabel Xiloxoxtla"
     ],
-    "Veracruz de Ignacio de la Llave": [
+    "Veracruz": [
         "Acajete",
         "Acatlán",
         "Acayucan",
@@ -2754,7 +2754,7 @@ export const municipio = {
         "Santiago Sochiapan",
         "Xochiapa"
     ],
-    "Yucatán": [
+    "Yucatan": [
         "Abalá",
         "Acanceh",
         "Akil",
