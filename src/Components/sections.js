@@ -6,7 +6,8 @@ export const SectionFlex = styled.section`
     justify-content: ${props => props.justify ? props.justify : 'center'}
     ${props => props.bgColor ? 'background-color:' + props.bgColor : null}
     ${props => props.height ? 'height:' + props.height + 'px' : null}
-    ${props => props.marign ? 'margin:' + props.marign : null}
+    ${props => props.width ? 'width:' + props.width + 'px' : null}
+    ${props => props.margin ? 'margin:' + props.margin : null}
     ${props => props.responsiveToBlock ? media.phone`display:block;` : null}
 
 `
