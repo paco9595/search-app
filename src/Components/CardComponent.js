@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import StarRatings from 'react-star-ratings';
-
+import { media } from './../utils'
 const Container = styled.div`
     width: 300px;
     height: 200px;
@@ -28,7 +28,6 @@ const CardTitle = styled.h2`
 const CardDescription = styled.div`
     width: 80%;
 `
-const CardDescription = styled.div``
 export const CardContainer = props => {
     const { nombre, img, descripcion, shadow, click, rating } = props;
     return (

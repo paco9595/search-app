@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import { Home, Search, Login } from './contaniers';
+import { Home, Search, Login, Empresa } from './contaniers';
 import { NavBarNavigation } from './Components/navbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -20,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/search/:word" component={Search} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/empresa/:id" component={Empresa} />
           </Switch>
         </Fragment>
       </Router>

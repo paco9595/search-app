@@ -1,26 +1,29 @@
 import React, { PureComponent } from 'react'
 import { SearchContainer } from './style';
-import { SectionFlex, TextInput, Filter, Card } from './../Components'
-import { Theme, media } from './../utils'
+import { SectionFlex, TextInput, Filter } from './../Components'
+import { Theme } from './../utils'
 import styled from 'styled-components'
 import { Empresas } from './../data/empresas'
+import { Elevation, Card } from "@blueprintjs/core";
+import StarRatings from 'react-star-ratings'
 
 const SearchReslts = styled.div`
-    width: 80%;
-    display: flex;
-    div{
-        ${media.laptop`
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-        `}
+    width: 1300px;
+    .card{
+        margin: 10px;
+        display:flex;   
+        .cards{
+            display:flex;
+            img{
+                width: 300px;
+                height: 200px;
+                margin-right: 20px;
+            }
+        }
     }
-    ${media.laptop`
-        width:100%;
-    `}
 `
 export class Search extends PureComponent {
+
     state = {
         results: []
     }
@@ -30,8 +33,8 @@ export class Search extends PureComponent {
     change(estado, municipio) {
         console.log({ estado, municipio })
     }
-    clickCard(data) {
-        console.log('paco')
+    clickCard = id => {
+        this.props.history.push(`/empresa/${id}`)
     }
     render() {
         return (
@@ -51,7 +54,7 @@ export class Search extends PureComponent {
                         <Filter change={this.change} />
                         <SearchReslts>
                             {this.state.results.map(item =>
-                                <Card className='card' interactive={true} elevation={Elevation.THREE} key={item.id}>
+                                <Card onClick={e => this.clickCard(item.id)} className='card' interactive={true} elevation={Elevation.THREE} key={item.id}>
                                     <div className='cards'>
                                         <img src={item.img} alt={item.nombre} />
                                         <div>
