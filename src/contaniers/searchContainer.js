@@ -1,14 +1,26 @@
 import React, { PureComponent } from 'react'
 import { SearchContainer } from './style';
-import { SectionFlex, TextInput, Filter, Card } from './../Components'
+import { SectionFlex, TextInput, Filter } from './../Components'
 import { Theme } from './../utils'
 import styled from 'styled-components'
 import { Empresas } from './../data/empresas'
+import { Card, Elevation } from '@blueprintjs/core'
+import StarRatings from 'react-star-ratings';
+
 const SearchReslts = styled.div`
     width: 1300px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    .card{
+        margin: 10px;
+        display:flex;   
+        .cards{
+            display:flex;
+            img{
+                width: 300px;
+                height: 200px;
+                margin-right: 20px;
+            }
+        }
+    }
 `
 export class Search extends PureComponent {
     state = {
@@ -34,12 +46,29 @@ export class Search extends PureComponent {
                 </SectionFlex>
                 <SectionFlex>
                     <SectionFlex
-                        margin='100px 0;'
+                        margin='100px 0'
                         align='flex-start'
+                        width='90vw'
                     >
                         <Filter change={this.change} />
                         <SearchReslts>
-                            {this.state.results.map(data => <Card click={this.clickCard} shadow key={data.id} {...data} />)}
+                            {this.state.results.map(item =>
+                                <Card className='card' interactive={true} elevation={Elevation.THREE} key={item.id}>
+                                    <div className='cards'>
+                                        <img src={item.img} alt={item.nombre} />
+                                        <div>
+                                            <h5>{item.nombre}</h5>
+                                            <p>{item.descripcion}</p>
+                                            <StarRatings
+                                                rating={item.rating}
+                                                starDimension="20px"
+                                                starSpacing="5px"
+                                                starRatedColor="#ffc107"
+                                            />
+                                        </div>
+                                    </div>
+                                </Card>
+                            )}
                         </SearchReslts>
                     </SectionFlex>
                 </SectionFlex>

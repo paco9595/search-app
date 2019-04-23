@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import StarRatings from 'react-star-ratings';
 
-const CardContainer = styled.div`
+const Container = styled.div`
     width: 300px;
     height: 200px;
     background-color: white;
@@ -11,20 +12,25 @@ const CardContainer = styled.div`
 const CardImg = styled.img`
     width: 300px;
     height: 100px;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
 `
 const CardTitle = styled.div`
     font-size: 20px;
 `
 const CardDescription = styled.div``
-export const Card = props => {
-    const { nombre, img, descripcion, shadow, click } = props;
+export const CardContainer = props => {
+    const { nombre, img, descripcion, shadow, click, rating } = props;
     return (
-        <CardContainer shadow={shadow} onClick={click}>
+        <Container shadow={shadow} onClick={click}>
             <CardImg src={img} />
             <CardTitle>{nombre}</CardTitle>
             <CardDescription>{descripcion}</CardDescription>
-        </CardContainer>
+
+            <StarRatings
+                rating={rating}
+                starDimension="20px"
+                starSpacing="5px"
+                starRatedColor="#ffc107"
+            />
+        </Container>
     )
 }

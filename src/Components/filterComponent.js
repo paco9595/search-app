@@ -20,12 +20,12 @@ const FilterSubtitle = styled.div`
     font-size: 24px;
 `
 const FilterItem = styled.div``
-const FilterSelect = styled.select`
-    appearance: none;
-    border: none;
-    border-bottom: 1px solid black;
-    width: 200px;
-`
+// const FilterSelect = styled.select`
+//     appearance: none;
+//     border: none;
+//     border-bottom: 1px solid black;
+//     width: 200px;
+// `
 export class Filter extends PureComponent {
     state = {
         estado: '',
@@ -51,25 +51,28 @@ export class Filter extends PureComponent {
                     <FilterTitle>Ubicacion</FilterTitle>
                     <FilterItem>
                         <FilterSubtitle>Estado</FilterSubtitle>
-                        <FilterSelect onChange={this.changeEstado}>
-                            <option disabled selected> selecion un estado</option>
-                            {estados.map(item =>
-                                <option
-                                    key={item.clave}
-                                    value={item.nombre}
-                                >
-                                    {item.nombre}
-                                </option>)}
-                        </FilterSelect>
+                        <div className="bp3-select modifier">
+                            <select className="bp3-minimal" onChange={this.changeEstado}>
+                                <option selected>Choose an item...</option>
+                                {estados.map(item =>
+                                    <option
+                                        key={item.clave}
+                                        value={item.nombre}
+                                    >
+                                        {item.nombre}
+                                    </option>)}
+                            </select>
+                        </div>
                     </FilterItem>
                     <FilterItem>
                         <FilterSubtitle>municipio</FilterSubtitle>
-                        {this.state.estado !== '' && (<FilterSelect onChange={this.changeMuncipio}>
+                        {this.state.estado !== '' && (<div className="bp3-select modifier"><select onChange={this.changeMuncipio}>
+                            <option value={0}>todos los municipios</option>
                             {municipio[this.state.estado].map((item, i) => <option key={i} value={item}>{item}</option>)}
-                        </FilterSelect>)}
+                        </select></div>)}
                     </FilterItem>
                 </FilterGroup>
-            </FilterContainer>
+            </FilterContainer >
         )
     }
 } 
