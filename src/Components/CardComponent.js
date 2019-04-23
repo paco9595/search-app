@@ -8,13 +8,25 @@ const Container = styled.div`
     background-color: white;
     ${props => props.shadow ? 'box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.75);' : null}
     margin: 20px;
+    ${media.laptop`
+        display:block;
+        width:40%;
+    `}
+    ${media.phone`
+        width:90%;
+    `}
 `
 const CardImg = styled.img`
     width: 300px;
-    height: 100px;
+    height: 200px;
+    ${media.laptop`width:100%;`}
 `
-const CardTitle = styled.div`
+const CardTitle = styled.h2`
     font-size: 20px;
+    font-weight: 700;
+`
+const CardDescription = styled.div`
+    width: 80%;
 `
 const CardDescription = styled.div``
 export const CardContainer = props => {

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { Link } from 'react-router-dom'
 import { HomeContainer, IconContainer, TitleIcon } from './style'
 import { TextInput, SectionFlex } from './../Components'
 import { Theme } from './../utils'
@@ -38,25 +39,37 @@ export class Home extends PureComponent {
                         />
                     </div>
                 </SectionFlex>
-                <SectionFlex justify="space-evenly" marign={'30px 0'} responsiveToBlock>
-                    <IconContainer>
-                        <div>
-                            <FontAwesomeIcon icon={'tools'} size="7x" />
-                        </div>
-                        <TitleIcon>Reparaciones</TitleIcon>
-                    </IconContainer>
-                    <IconContainer>
-                        <div>
-                            <FontAwesomeIcon icon={'plane-departure'} size="7x" />
-                        </div>
-                        <TitleIcon>Viajes</TitleIcon>
-                    </IconContainer>
-                    <IconContainer>
-                        <div>
-                            <FontAwesomeIcon icon={'gifts'} size="7x" />
-                        </div>
-                        <TitleIcon>Regalos</TitleIcon>
-                    </IconContainer>
+                <SectionFlex justify="space-evenly" marign={'30px 0'} responsiveToBlock="phone">
+                    <Link to={{
+                        pathname: "/search/repearaciones"
+                    }}>
+                        <IconContainer>
+                            <div>
+                                <FontAwesomeIcon icon={'tools'} size="7x" />
+                            </div>
+                            <TitleIcon>Reparaciones</TitleIcon>
+                        </IconContainer>
+                    </Link>
+                    <Link to={{
+                        pathname: "/search/viajes"
+                    }}>
+                        <IconContainer>
+                            <div>
+                                <FontAwesomeIcon icon={'plane-departure'} size="7x" />
+                            </div>
+                            <TitleIcon>Viajes</TitleIcon>
+                        </IconContainer>
+                    </Link>
+                    <Link to={{
+                        pathname: "/search/regalos"
+                    }}>
+                        <IconContainer>
+                            <div>
+                                <FontAwesomeIcon icon={'gifts'} size="7x" />
+                            </div>
+                            <TitleIcon>Regalos</TitleIcon>
+                        </IconContainer>
+                    </Link>
                 </SectionFlex>
                 {/* <section>
                     <SliderComponent />

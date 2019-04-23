@@ -4,6 +4,7 @@ export const HomeContainer = styled.div`
 `
 export const IconContainer = styled.div`
     padding: 30px;
+    color:black;
     div{
         display:flex;
         justify-content:center;

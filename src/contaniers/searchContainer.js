@@ -1,26 +1,24 @@
 import React, { PureComponent } from 'react'
 import { SearchContainer } from './style';
-import { SectionFlex, TextInput, Filter } from './../Components'
-import { Theme } from './../utils'
+import { SectionFlex, TextInput, Filter, Card } from './../Components'
+import { Theme, media } from './../utils'
 import styled from 'styled-components'
 import { Empresas } from './../data/empresas'
-import { Card, Elevation } from '@blueprintjs/core'
-import StarRatings from 'react-star-ratings';
 
 const SearchReslts = styled.div`
-    width: 1300px;
-    .card{
-        margin: 10px;
-        display:flex;   
-        .cards{
-            display:flex;
-            img{
-                width: 300px;
-                height: 200px;
-                margin-right: 20px;
-            }
-        }
+    width: 80%;
+    display: flex;
+    div{
+        ${media.laptop`
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        `}
     }
+    ${media.laptop`
+        width:100%;
+    `}
 `
 export class Search extends PureComponent {
     state = {
@@ -72,7 +70,7 @@ export class Search extends PureComponent {
                         </SearchReslts>
                     </SectionFlex>
                 </SectionFlex>
-            </SearchContainer >
+            </SearchContainer>
         )
     }
 }

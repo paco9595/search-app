@@ -9,7 +9,7 @@ const Input = styled.input`
     padding: 10px;
     box-shadow: 3px 3px rgba(0, 0, 0, 0.56);
     ${media.phone`
-        width:90%;
+        width:370px;
     `}
 `
 const Opciones = styled.div`
@@ -33,7 +33,6 @@ const Opcion = styled.div`
 `
 const InputContainer = styled.div`
     ${media.phone`
-        width:90%;
         display: flex;
         justify-content: center;
     `}

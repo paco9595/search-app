@@ -2,14 +2,22 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { estados } from './../data/estados'
 import { municipio } from './../data/municipios'
-
+import { media } from './../utils'
 const FilterContainer = styled.div`
-    position:absolut;
-    left: 0;    
-    width: fit-content;
-    min-width: 300px;
+    position:relative;
+    left: 30px;
+    width: 300px;
+    ${media.laptop`
+        position: initial;
+        width: 100%;
+    `}
 `
-const FilterGroup = styled.div``
+const FilterGroup = styled.div`
+    ${media.laptop`
+        display: flex;
+
+    `}
+`
 
 const FilterTitle = styled.div`
     font-weight: bold;
@@ -47,8 +55,8 @@ export class Filter extends PureComponent {
     render() {
         return (
             <FilterContainer>
+                <FilterTitle>Ubicacion</FilterTitle>
                 <FilterGroup>
-                    <FilterTitle>Ubicacion</FilterTitle>
                     <FilterItem>
                         <FilterSubtitle>Estado</FilterSubtitle>
                         <div className="bp3-select modifier">
