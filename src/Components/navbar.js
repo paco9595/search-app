@@ -16,7 +16,7 @@ export const NavBarNavigation = props => {
                 <AnchorButton
                     href="/login"
                     icon="office"
-                    text='Empresas'
+                    text='Login'
                 />
             </Navbar.Group>
         </Navbar>

@@ -6,14 +6,18 @@ import styled from 'styled-components'
 import { Empresas } from './../data/empresas'
 import { Elevation, Card } from "@blueprintjs/core";
 import StarRatings from 'react-star-ratings'
+import { vacantes } from '../data/vacantes';
 
 const SearchReslts = styled.div`
-    width: 1300px;
+    display: flex;
+    width:90vw;
+    flex-wrap: wrap;
+    justify-content: center;
     .card{
         margin: 10px;
-        display:flex;   
+        display: flex;
+        width: 300px;   
         .cards{
-            display:flex;
             img{
                 width: 300px;
                 height: 200px;
@@ -22,13 +26,14 @@ const SearchReslts = styled.div`
         }
     }
 `
+
 export class Search extends PureComponent {
 
     state = {
         results: []
     }
     componentDidMount() {
-        this.setState({ results: Empresas })
+        this.setState({ results: vacantes })
     }
     change(estado, municipio) {
         console.log({ estado, municipio })
@@ -48,18 +53,24 @@ export class Search extends PureComponent {
                 <SectionFlex>
                     <SectionFlex
                         margin='100px 0'
-                        align='flex-start'
                         width='90vw'
+                        display='block'
                     >
-                        <Filter change={this.change} />
+                        {/* <Filter change={this.change} /> */}
                         <SearchReslts>
                             {this.state.results.map(item =>
-                                <Card onClick={e => this.clickCard(item.id)} className='card' interactive={true} elevation={Elevation.THREE} key={item.id}>
+                                <Card
+                                    onClick={e => this.clickCard(item.id)}
+                                    className='card'
+                                    interactive={true}
+                                    elevation={Elevation.THREE}
+                                    key={item.id}
+                                >
                                     <div className='cards'>
-                                        <img src={item.img} alt={item.nombre} />
+                                        <img src={item.logo} alt={item.empresa} />
                                         <div>
-                                            <h5>{item.nombre}</h5>
-                                            <p>{item.descripcion}</p>
+                                            <h5>{item.nombreVacante}</h5>
+                                            <p>{item.description}</p>
                                             <StarRatings
                                                 rating={item.rating}
                                                 starDimension="20px"
