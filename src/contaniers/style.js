@@ -19,7 +19,6 @@ export const IconContainer = styled.div`
 `
 export const Counter = styled.div`
     border-radius: 10px;
-    background-color:red;
     width: fit-content;
     padding: 5px;
     margin: 0 auto;
@@ -33,8 +32,5 @@ export const TitleIcon = styled.div`
 `
 
 export const EmpresaContainer = styled.div`
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items:top;
+    margin: 0 20%;
 `

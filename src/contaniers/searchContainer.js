@@ -41,7 +41,7 @@ export class Search extends PureComponent {
         console.log({ estado, municipio })
     }
     clickCard = id => {
-        this.props.history.push(`/empresa/${id}`)
+        this.props.history.push(`/vacante/${id}`)
     }
     render() {
         return (

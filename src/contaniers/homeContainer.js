@@ -41,7 +41,7 @@ export class Home extends PureComponent {
                         />
                     </div>
                 </SectionFlex>
-                <SectionFlex>Vacantes Disponibles</SectionFlex>
+                <SectionFlex><h1>Vacantes Disponibles</h1></SectionFlex>
                 <SectionFlex justify="space-evenly" marign={'30px 0'} responsiveToBlock="phone">
                     <Link to={{
                         pathname: "/search/repearaciones"
@@ -64,6 +64,9 @@ export class Home extends PureComponent {
                                 <FontAwesomeIcon icon={'building'} size="2x" />
                             </div>
                             <TitleIcon>Arquitectura</TitleIcon>
+                            <Counter>
+                                10
+                            </Counter>
                         </IconContainer>
                     </Link>
                     <Link to={{
@@ -74,6 +77,9 @@ export class Home extends PureComponent {
                                 <FontAwesomeIcon icon={'gavel'} size="2x" />
                             </div>
                             <TitleIcon>Leyes</TitleIcon>
+                            <Counter>
+                                10
+                            </Counter>
                         </IconContainer>
                     </Link>
                     <Link to={{
@@ -84,6 +90,9 @@ export class Home extends PureComponent {
                                 <FontAwesomeIcon icon={'flask'} size="2x" />
                             </div>
                             <TitleIcon>ciencia</TitleIcon>
+                            <Counter>
+                                10
+                            </Counter>
                         </IconContainer>
                     </Link>
                 </SectionFlex>
