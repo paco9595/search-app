@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react'
 import { SearchContainer } from './style';
-import { SectionFlex, TextInput, Filter } from './../Components'
+import { SectionFlex, TextInput } from './../Components'
 import { Theme } from './../utils'
 import styled from 'styled-components'
-import { Empresas } from './../data/empresas'
+// import { Empresas } from './../data/empresas'
 import { Elevation, Card } from "@blueprintjs/core";
 import StarRatings from 'react-star-ratings'
 import { vacantes } from '../data/vacantes';
+import { config } from './../config'
+
 
 const SearchReslts = styled.div`
     display: flex;
@@ -19,7 +21,7 @@ const SearchReslts = styled.div`
         width: 300px;   
         .cards{
             img{
-                width: 300px;
+                width: 250px;
                 height: 200px;
                 margin-right: 20px;
             }
@@ -67,7 +69,7 @@ export class Search extends PureComponent {
                                     key={item.id}
                                 >
                                     <div className='cards'>
-                                        <img src={item.logo} alt={item.empresa} />
+                                        <img src={`${config.urlImgBase}${item.logo}`} alt={item.empresa} />
                                         <div>
                                             <h5>{item.nombreVacante}</h5>
                                             <p>{item.description}</p>
