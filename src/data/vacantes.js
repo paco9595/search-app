@@ -2,10 +2,13 @@ export const vacantes = [
     {
         empresa: 'Accenture',
         logo: 'accenture.png',
+        dirrecion: 'av.insurgentes',
+        telefono: '812345678',
         nombreVacante: 'FrontEnd Developer',
         rating: 5,
         id: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis '
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
+        skills: ['react', 'html5', 'node', 'styled-components']
     },
     {
         empresa: 'Epicor',
