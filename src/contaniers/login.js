@@ -48,6 +48,12 @@ export class Login extends Component {
     }
     submit = e => {
         e.preventDefault()
+        const { email, pass } = this.state
+        console.log(this.props)
+        if (email === 'paco' && pass === 'paco') {
+            localStorage.setItem('user', JSON.stringify(this.state))
+            this.props.history.goBack();
+        }
         this.setState({ hasError: !this.state.hasError })
     }
     render() {

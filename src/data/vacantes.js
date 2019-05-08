@@ -8,7 +8,8 @@ export const vacantes = [
         rating: 5,
         id: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis ',
-        skills: ['react', 'html5', 'node', 'styled-components']
+        skills: ['react', 'html5', 'node', 'styled-components'],
+        apply: false
     },
     {
         empresa: 'Epicor',

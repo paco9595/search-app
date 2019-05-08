@@ -23,9 +23,7 @@ const InfoContainer = styled.div`
 const SideInfo = styled.div`
   width: 300px;
 `
-const titleEmpresa = styled.div`
 
-`
 const RightButton = styled.div`
   width: 100%;
   text-align: right;
@@ -39,10 +37,9 @@ class Vacante extends Component {
   }
   componentWillMount() {
     const { id } = this.props.match.params;
-    const data = vacantes.filter(i => i.id == id.toString())
-    this.setState({ data: data[0] }, () => {
-      console.log(this.state)
-    })
+    const data = vacantes.filter(i => i.id.toString() === id)
+    console.log(data[0])
+    this.setState({ data: data[0] })
   }
   clickApply = () => {
     const user = localStorage.getItem('user')
@@ -56,7 +53,7 @@ class Vacante extends Component {
     toaster: (ref) => (this.toaster = ref),
   };
   render() {
-    const { data: { logo, description, empresa, dirrecion, telefono, skills } = {} } = this.state
+    const { data: { logo, description, empresa, dirrecion, telefono, skills, apply } = {} } = this.state
     return (
       <EmpresaContainer>
         <Toaster
@@ -94,9 +91,9 @@ class Vacante extends Component {
                 large
                 rightIcon="arrow-right"
                 intent="success"
-                text="Aplicar puesto"
+                text={!apply || !this.state.applybuttonDisable ? "Aplicar puesto" : 'puestoAplicado'}
                 onClick={this.clickApply}
-                disabled={this.state.applybuttonDisable}
+                disabled={apply || this.state.applybuttonDisable}
               />
             </RightButton>
             <SectionFlex display='block' margin={'20px'}>
