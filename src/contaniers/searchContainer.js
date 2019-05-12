@@ -69,7 +69,7 @@ export class Search extends PureComponent {
                                     key={item.id}
                                 >
                                     <div className='cards'>
-                                        <img src={`${config.urlImgBase}${item.logo}`} alt={item.empresa} />
+                                        <img src={`${config.urlImgLogoBase}${item.logo}`} alt={item.empresa} />
                                         <div>
                                             <h5>{item.nombreVacante}</h5>
                                             <p>{item.description}</p>

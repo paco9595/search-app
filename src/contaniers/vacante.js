@@ -68,7 +68,7 @@ class Vacante extends Component {
           vw
           vh
         >
-          {logo && <Img src={`${config.urlImgBase}${logo}`} />}
+          {logo && <Img src={`${config.urlImgLogoBase}${logo}`} />}
         </LogoContainer>
         {description && <InfoContainer>
           <SideInfo>

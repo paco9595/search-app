@@ -1,3 +1,4 @@
 export const config = {
-    urlImgBase: 'http://localhost:3000/assets/logo/'
+    urlImgLogoBase: 'http://localhost:3000/assets/logo/',
+    urlImgUserBase: 'http://localhost:3000/assets/user/'
 }
