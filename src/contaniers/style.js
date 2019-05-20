@@ -33,4 +33,5 @@ export const TitleIcon = styled.div`
 
 export const EmpresaContainer = styled.div`
     margin: 0 20%;
+    width:"80%"
 `

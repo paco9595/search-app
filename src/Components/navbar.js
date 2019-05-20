@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { Navbar, Alignment, AnchorButton } from '@blueprintjs/core'
+import styled from 'styled-components'
+import {
+    Navbar,
+    Alignment,
+    AnchorButton,
+    Popover,
+    PopoverInteractionKind,
+    Classes
+} from '@blueprintjs/core'
+const DropdownItem = styled.div`
+    height: 30px;
+`
 class NavBarNavigation extends Component {
     state = {
-        isLogin: false
+        isLogin: false,
+        isOpen: false
     }
     componentWillUpdate(nextProps) {
         if (nextProps !== this.props) {
@@ -35,11 +47,27 @@ class NavBarNavigation extends Component {
                     <Navbar.Divider />
                 </Navbar.Group>
                 <Navbar.Group align={Alignment.RIGHT}>
-                    <AnchorButton
-                        href={isLogin ? '/profile' : "/login"}
-                        icon={isLogin ? 'user' : 'office'}
-                        text={isLogin ? 'profile' : 'Login'}
-                    />
+                    <Popover
+                        popoverClassName={0 <= 2 ? Classes.POPOVER_CONTENT_SIZING : ""}
+                        interactionKind={PopoverInteractionKind.HOVER}
+                        isOpen={this.state.isOpen === true ? /* Controlled */ true : /* Uncontrolled */ undefined}
+                    >
+                        <AnchorButton
+                            text={isLogin ? '' : 'Login'}
+                            icon={isLogin ? 'user' : 'office'}
+                            href={!isLogin ? "/login" : null}
+                        />
+                        {isLogin &&
+                            <div>
+                                <DropdownItem>
+                                    <div><Link to="/profile"> profile</Link></div>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <div><Link to="/profile"> log out</Link></div>
+                                </DropdownItem>
+                            </div>
+                        }
+                    </Popover>
                 </Navbar.Group>
             </Navbar>
         )

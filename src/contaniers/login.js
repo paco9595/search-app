@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import { Theme } from './../utils'
+import { setlogin } from './../services'
 import {
     FormGroup,
     InputGroup,
@@ -49,12 +50,12 @@ export class Login extends Component {
     submit = e => {
         e.preventDefault()
         const { email, pass } = this.state
-        console.log(this.props)
-        if (email === 'paco' && pass === 'paco') {
-            localStorage.setItem('user', JSON.stringify(this.state))
-            this.props.history.goBack();
-        }
-        this.setState({ hasError: !this.state.hasError })
+        setlogin(email, pass).then(res => {
+            if (res.status === 200) {
+                return this.props.history.goBack();
+            }
+            this.setState({ hasError: !this.state.hasError })
+        })
     }
     render() {
         const { hasError, email, pass } = this.state

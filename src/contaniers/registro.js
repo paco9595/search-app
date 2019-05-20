@@ -15,7 +15,7 @@ const RegistroContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
 `
 const FormContainer = styled.div`
   margin:20px;
@@ -49,14 +49,27 @@ export class Registro extends Component {
     skill: [],
     hasError: false
   }
-  handleChange = e => {
+  handleChange = (e, m) => {
     console.log(e)
+    this.setState({ skill: e })
+    // e.stopPropagation()
   }
-  change = e => {
-    const { target: { value, id } = {} } = e
-    id === 'Nombre' ?
-      this.setState({ nombre: value }) :
-      this.setState({ apellido: value })
+  change = (e, field) => {
+    const { target: { value } = {} } = e
+    this.setState({ [field]: value })
+  }
+  submit = (e) => {
+    e.preventDefault()
+    console.log(this.state)
+  }
+  cancel = () => {
+    this.setState({
+      nombre: '',
+      apellido: '',
+      correo: '',
+      edad: 0,
+      skill: [],
+    })
   }
   render() {
     const {
@@ -80,7 +93,7 @@ export class Registro extends Component {
                 <InputGroup
                   id='Nombre'
                   value={nombre}
-                  onChange={this.change}
+                  onChange={(e) => this.change(e, 'nombre')}
                   intent={hasError ? 'danger' : 'none'}
                   required
                 />
@@ -94,7 +107,7 @@ export class Registro extends Component {
                 <InputGroup
                   id='Apellido'
                   value={apellido}
-                  onChange={this.change}
+                  onChange={(e) => this.change(e, 'apellido')}
                   intent={hasError ? 'danger' : 'none'}
                   required
                 />
@@ -108,8 +121,9 @@ export class Registro extends Component {
                 <InputGroup
                   id='Edad'
                   value={edad}
-                  onChange={this.change}
+                  onChange={(e) => this.change(e, 'edad')}
                   intent={hasError ? 'danger' : 'none'}
+                  type='number'
                   required
                 />
               </FormGroup>
@@ -121,7 +135,8 @@ export class Registro extends Component {
               >
                 <TagInput
                   leftIcon={"user"}
-                  onChange={this.handleChange}
+                  addOnBlur={true}
+                  onChange={(e, m) => this.handleChange(e, m)}
                   placeholder="Separate values with commas..."
                   values={skill}
                 />
@@ -137,6 +152,7 @@ export class Registro extends Component {
                 icon="eraser"
                 text='Borrar'
                 type='submit'
+                onClick={this.cancel}
               />
             </FormItem>
           </form>

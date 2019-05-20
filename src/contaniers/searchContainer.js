@@ -6,9 +6,8 @@ import styled from 'styled-components'
 // import { Empresas } from './../data/empresas'
 import { Elevation, Card } from "@blueprintjs/core";
 import StarRatings from 'react-star-ratings'
-import { vacantes } from '../data/vacantes';
 import { config } from './../config'
-
+import { getAllVacantes } from './../services'
 
 const SearchReslts = styled.div`
     display: flex;
@@ -34,8 +33,11 @@ export class Search extends PureComponent {
     state = {
         results: []
     }
-    componentDidMount() {
-        this.setState({ results: vacantes })
+    componentWillMount() {
+        getAllVacantes().then(results => {
+            console.log(results)
+            this.setState({ results: results.vacantes })
+        })
     }
     change(estado, municipio) {
         console.log({ estado, municipio })
@@ -58,21 +60,21 @@ export class Search extends PureComponent {
                         width='90vw'
                         display='block'
                     >
-                        {/* <Filter change={this.change} /> */}
                         <SearchReslts>
                             {this.state.results.map(item =>
                                 <Card
-                                    onClick={e => this.clickCard(item.id)}
+                                    onClick={e => this.clickCard(item.id_vacante)}
                                     className='card'
                                     interactive={true}
                                     elevation={Elevation.THREE}
-                                    key={item.id}
+                                    key={item.id_vacante}
                                 >
                                     <div className='cards'>
                                         <img src={`${config.urlImgLogoBase}${item.logo}`} alt={item.empresa} />
                                         <div>
-                                            <h5>{item.nombreVacante}</h5>
+                                            <h5>{item.Nombre_puesto}</h5>
                                             <p>{item.description}</p>
+                                            <h6>{item.nombre}</h6>
                                             <StarRatings
                                                 rating={item.rating}
                                                 starDimension="20px"

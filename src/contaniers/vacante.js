@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { SectionFlex, } from '../Components'
+import { SectionFlex } from '../Components'
+import { getVacante, applyVacante } from './../services'
 import { EmpresaContainer } from './style'
-import { vacantes } from './../data/vacantes'
 import { config } from './../config'
 import styled from 'styled-components'
 import { InfoItem } from './../Components'
@@ -29,31 +29,42 @@ const RightButton = styled.div`
   text-align: right;
   padding:40px;
 `
-const VacanteInfo = styled.div``
+const VacanteInfo = styled.div`
+  width:100%;
+`
 class Vacante extends Component {
   state = {
     data: {},
     applybuttonDisable: false
   }
   componentWillMount() {
+    const user = JSON.parse(localStorage.getItem('user'))
     const { id } = this.props.match.params;
-    const data = vacantes.filter(i => i.id.toString() === id)
-    console.log(data[0])
-    this.setState({ data: data[0] })
+    let id_usuario = 0
+    if (user) id_usuario = user.id_usuario
+    getVacante(id, id_usuario).then(data => {
+      this.setState({ data: data.vacante })
+    })
   }
   clickApply = () => {
-    const user = localStorage.getItem('user')
+    const user = JSON.parse(localStorage.getItem('user'))
     if (!user) {
       this.props.history.push('/login')
     } else {
-      this.setState({ applybuttonDisable: true })
+      const { id } = this.props.match.params;
+      applyVacante(id, user.id_usuario).then(res => {
+        if (res.status === 200) {
+          this.setState({ applybuttonDisable: true })
+        }
+
+      })
     }
   }
   refHandlers = {
     toaster: (ref) => (this.toaster = ref),
   };
   render() {
-    const { data: { logo, description, empresa, dirrecion, telefono, skills, apply } = {} } = this.state
+    const { data: { logo, descripcion, nombre, direccion, telefono, skills, apply } = {} } = this.state
     return (
       <EmpresaContainer>
         <Toaster
@@ -70,11 +81,11 @@ class Vacante extends Component {
         >
           {logo && <Img src={`${config.urlImgLogoBase}${logo}`} />}
         </LogoContainer>
-        {description && <InfoContainer>
+        {direccion && <InfoContainer>
           <SideInfo>
             <InfoItem
               title="empresa"
-              info={empresa}
+              info={nombre}
             />
             <InfoItem
               title="telefono"
@@ -82,7 +93,7 @@ class Vacante extends Component {
             />
             <InfoItem
               title="dirrecion"
-              info={dirrecion}
+              info={direccion}
             />
           </SideInfo>
           <VacanteInfo>
@@ -93,13 +104,13 @@ class Vacante extends Component {
                 intent="success"
                 text={!apply || !this.state.applybuttonDisable ? "Aplicar puesto" : 'puestoAplicado'}
                 onClick={this.clickApply}
-                disabled={apply || this.state.applybuttonDisable}
+                disabled={apply === 'true' || this.state.applybuttonDisable}
               />
             </RightButton>
-            <SectionFlex display='block' margin={'20px'}>
+            <SectionFlex display='block' heightPor={100} margin={'20px'}>
               <h3>Descripcion</h3>
               <div>
-                {description}
+                {descripcion}
               </div>
             </SectionFlex>
             <SectionFlex display='block' margin={'20px'}>
