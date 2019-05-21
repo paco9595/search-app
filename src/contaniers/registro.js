@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import { createUser } from './../services'
 import {
   FormGroup,
   InputGroup,
@@ -10,7 +12,7 @@ import {
 const RegistroContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   background-image: url('./assets/O6NM390.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +24,7 @@ const FormContainer = styled.div`
   background-color: white;
   border-radius: 10px;
   width: 300px;
-  height:35   0px;
+  height:350px;
 `
 const FormItem = styled.div`
   width: 80%;
@@ -38,21 +40,22 @@ const FormTitle = styled.div`
   margin: 25px 0px;
   font-size:30px;
 `
-
-
-export class Registro extends Component {
+class Registro extends Component {
   state = {
     nombre: '',
-    apellido: '',
-    correo: '',
+    pass: '',
+    email: '',
     edad: 0,
     skill: [],
-    hasError: false
+    hasError: false,
+    tel: '',
+    descripcion: '',
+    img: {},
+    cv: {}
   }
   handleChange = (e, m) => {
     console.log(e)
     this.setState({ skill: e })
-    // e.stopPropagation()
   }
   change = (e, field) => {
     const { target: { value } = {} } = e
@@ -60,23 +63,52 @@ export class Registro extends Component {
   }
   submit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    createUser(this.state).then(res => {
+      if (res.status === 200) {
+        console.log(res.data)
+        localStorage.setItem('user', JSON.stringify(res.data.user[0]))
+        localStorage.setItem('token', JSON.stringify(res.data.token))
+        this.props.history.push('/profile')
+      }
+      else if (res.status === 406) {
+        this.setState({ hasError: true })
+      }
+    })
+  }
+  changeFile = (e, field) => {
+    console.log(e.target.files)
+    const files = Array.from(e.target.files)
+    const formData = new FormData()
+    files.forEach((file, i) => {
+      formData.append(i, file)
+    })
+    console.log(files)
+    this.setState({ [field]: files })
   }
   cancel = () => {
     this.setState({
       nombre: '',
-      apellido: '',
-      correo: '',
+      email: '',
+      pass: '',
+      email: '',
       edad: 0,
       skill: [],
+      hasError: false,
+      tel: '',
+      descripcion: '',
+      img: {},
+      cv: {}
     })
   }
   render() {
     const {
       nombre,
-      apellido,
+      email,
+      pass,
       edad,
       skill,
+      tel,
+      descripcion,
       hasError
     } = this.state
     return (
@@ -94,6 +126,19 @@ export class Registro extends Component {
                   id='Nombre'
                   value={nombre}
                   onChange={(e) => this.change(e, 'nombre')}
+                  required
+                />
+              </FormGroup>
+            </FormItem>
+            <FormItem>
+              <FormGroup
+                label='email'
+                labelFor='email'
+              >
+                <InputGroup
+                  id='email'
+                  value={email}
+                  onChange={(e) => this.change(e, 'email')}
                   intent={hasError ? 'danger' : 'none'}
                   required
                 />
@@ -101,14 +146,26 @@ export class Registro extends Component {
             </FormItem>
             <FormItem>
               <FormGroup
-                label='Apellido'
-                labelFor='Apellido'
+                label='pass'
+                labelFor='pass'
               >
                 <InputGroup
-                  id='Apellido'
-                  value={apellido}
-                  onChange={(e) => this.change(e, 'apellido')}
-                  intent={hasError ? 'danger' : 'none'}
+                  id='pass'
+                  value={pass}
+                  onChange={(e) => this.change(e, 'pass')}
+                  required
+                />
+              </FormGroup>
+            </FormItem>
+            <FormItem>
+              <FormGroup
+                label='telefono'
+                labelFor='telefono'
+              >
+                <InputGroup
+                  id='telefono'
+                  value={tel}
+                  onChange={(e) => this.change(e, 'tel')}
                   required
                 />
               </FormGroup>
@@ -122,8 +179,23 @@ export class Registro extends Component {
                   id='Edad'
                   value={edad}
                   onChange={(e) => this.change(e, 'edad')}
-                  intent={hasError ? 'danger' : 'none'}
                   type='number'
+                  required
+                />
+              </FormGroup>
+            </FormItem>
+            <FormItem>
+              <FormGroup
+                label='descripcion'
+                labelFor='descripcion'
+              >
+                <textarea
+                  rows="4"
+                  cols="50"
+                  name="comment"
+                  id='descripcion'
+                  value={descripcion}
+                  onChange={(e) => this.change(e, 'descripcion')}
                   required
                 />
               </FormGroup>
@@ -140,6 +212,36 @@ export class Registro extends Component {
                   placeholder="Separate values with commas..."
                   values={skill}
                 />
+              </FormGroup>
+            </FormItem>
+            <FormItem>
+              <FormGroup
+                label='cv'
+                labelFor='CV'
+              >
+                <label className="bp3-file-input .modifier">
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    onChange={e => this.changeFile(e, 'cv')}
+                  />
+                  <span className="bp3-file-upload-input">Choose file...</span>
+                </label>
+              </FormGroup>
+            </FormItem>
+            <FormItem>
+              <FormGroup
+                label='Imagen'
+                labelFor='imagen'
+              >
+                <label className="bp3-file-input .modifier">
+                  <input
+                    type="file"
+                    accept=".jpg,.png"
+                    onChange={e => this.changeFile(e, 'img')}
+                  />
+                  <span className="bp3-file-upload-input">Choose file...</span>
+                </label>
               </FormGroup>
             </FormItem>
             <FormItem flex={true}>
@@ -161,3 +263,4 @@ export class Registro extends Component {
     )
   }
 }
+export default withRouter(Registro)

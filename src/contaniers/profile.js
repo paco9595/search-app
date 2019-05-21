@@ -46,8 +46,13 @@ class Profile extends Component {
     aplicaiones: []
   }
   componentWillMount() {
-
-    getUser(4).then(res => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    console.log(user)
+    let id = user.id_usuario
+    if (this.props.match.params.id) {
+      id = this.props.match.params.id
+    }
+    getUser(id).then(res => {
       if (res.status !== 200) {
         this.props.history.push('/login')
       }

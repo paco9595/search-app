@@ -16,19 +16,20 @@ const DropdownItem = styled.div`
 class NavBarNavigation extends Component {
     state = {
         isLogin: false,
-        isOpen: false
+        isOpen: false,
+        user: {}
     }
     componentWillUpdate(nextProps) {
         if (nextProps !== this.props) {
-            const user = localStorage.getItem('user')
+            const user = JSON.parse(localStorage.getItem('user'))
             if (user && nextProps.location.pathname === '/login') {
                 this.props.history.push('/profile')
             }
         }
     }
     componentWillMount() {
-        const user = localStorage.getItem('user')
-        user && this.setState({ isLogin: true })
+        const user = JSON.parse(localStorage.getItem('user'))
+        user && this.setState({ isLogin: true, user })
         if (user && this.props.location.pathname === '/login') {
             this.props.history.push('/profile')
         }
@@ -62,6 +63,10 @@ class NavBarNavigation extends Component {
                                 <DropdownItem>
                                     <div><Link to="/profile"> profile</Link></div>
                                 </DropdownItem>
+                                {this.state.user && this.state.user.rol === 'empresa' &&
+                                    <DropdownItem>
+                                        <div><Link to="/aplicaiones"> aplicaciones</Link></div>
+                                    </DropdownItem>}
                                 <DropdownItem>
                                     <div><Link to="/profile"> log out</Link></div>
                                 </DropdownItem>

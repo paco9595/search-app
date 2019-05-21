@@ -24,3 +24,6 @@ export const getVacanteUser = id => {
 export const applyVacante = (id_vacante, id_usuario) => {
   return axios.put(`${baseURL}vacante/apply/${id_vacante}/${id_usuario}`, {}).then(res => res)
 }
+export const empresavacante = id => {
+  return axios.get(`${baseURL}vacante/empresa/${id}`, {}).then(({ data }) => data.vacantes)
+}

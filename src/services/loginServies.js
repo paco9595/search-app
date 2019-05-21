@@ -15,9 +15,18 @@ export const setlogin = (user, pass) => {
 
 export const getUser = (user) => {
   const token = JSON.parse(localStorage.getItem('token'))
+  console.log(token)
   return axios.get(`${baseURL}user/${user}`, {
     headers: {
       authorization: token
     }
+  })
+}
+export const createUser = user => {
+  console.log({ ...user })
+  return axios.post(`${baseURL}user/`, {
+    ...user,
+    skill: user.skill.toString()
+
   })
 }
